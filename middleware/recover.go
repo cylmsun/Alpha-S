@@ -11,7 +11,7 @@ func MyRecovery(c *gin.Context) {
 		if r != nil {
 			println("全局异常处理:", r)
 			debug.PrintStack()
-			//init.Error(c, 500, "", r)
+			//initJob.Error(c, 500, "", r)
 			c.Abort()
 		}
 	}()

@@ -23,5 +23,9 @@ func InitRouter(r *gin.Engine) *gin.Engine {
 	apiV1.Use(middleware.RequestFilter(), middleware.ResponseHeader())
 	apiV1.POST("/event", service.GetEvent) // 事件上报
 
+	testApi := r.Group("/test")
+	testApi.POST("/event", service.GetEvent)
+	testApi.POST("/sendMsg", service.SendTest)
+
 	return r
 }

@@ -24,11 +24,15 @@ type Config struct {
 		Password string `yaml:"password"`
 		DBName   string `yaml:"dbName"`
 	} `yaml:"db"`
+	Amap struct {
+		Host string `yaml:"host"`
+		Key  string `yaml:"key"`
+	} `yaml:"amap"`
 }
 
 // GetConfig 读取配置文件,path是项目根目录开始的相对路径
 func GetConfig() Config {
-	data, err := os.ReadFile("./config.yaml")
+	data, err := os.ReadFile("./config/config.yaml")
 	if err != nil {
 		fmt.Printf("read config file error:%s \n", err.Error())
 	}
