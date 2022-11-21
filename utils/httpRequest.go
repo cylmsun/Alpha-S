@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -29,4 +30,9 @@ func SendHttpRequest(method string, url string, body io.Reader, headerMap map[st
 		return
 	}
 	return
+}
+
+func SendBotRequest(host string, path string, body io.Reader) (bytes []byte, err error) {
+	url := fmt.Sprintf("%s%s", host, path)
+	return SendHttpRequest("POST", url, body, nil)
 }

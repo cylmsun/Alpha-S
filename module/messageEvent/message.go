@@ -4,29 +4,29 @@ import "Alpha-S/module"
 
 type MessageEvent struct {
 	module.BaseEvent
-	MessageType string `json:"message_type"`
-	MessageId   string `json:"message_id"`
-	UserId      string `json:"user_id"`
+	SubType    string `json:"sub_type"`
+	MessageId  string `json:"message_id"`
+	UserId     string `json:"user_id"`
+	RawMessage string `json:"raw_message"`
 }
 
 type PrivateMessageEvent struct {
 	MessageEvent
-	SubType    string `json:"sub_type"`
-	RawMessage string `json:"raw_message"`
-	Font       int32  `json:"font"`
-	Message    any    `json:"messag"` // todo
-	Sender     string `json:"sender"` // 根据群聊私聊mapping下面的struct
+	RawMessage string        `json:"raw_message"`
+	Font       int32         `json:"font"`
+	Message    any           `json:"messag"` // todo
+	Sender     PrivateSender `json:"sender"` // 根据群聊私聊mapping下面的struct
 }
 
 type GroupMessageEvent struct {
 	MessageEvent
-	SubType    string    `json:"sub_type"`
-	SelfId     int64     `json:"self_id"`
-	Anonymous  Anonymous `json:"anonymous"`
-	Message    any       `json:"messag"` // todo
-	RawMessage string    `json:"raw_message"`
-	Font       int32     `json:"font"`
-	Sender     string    `json:"sender"` // 根据群聊私聊mapping下面的struct
+	SubType    string      `json:"sub_type"`
+	SelfId     int64       `json:"self_id"`
+	Anonymous  Anonymous   `json:"anonymous"`
+	Message    any         `json:"messag"` // todo
+	RawMessage string      `json:"raw_message"`
+	Font       int32       `json:"font"`
+	Sender     GroupSender `json:"sender"` // 根据群聊私聊mapping下面的struct
 }
 
 type GroupSender struct {
