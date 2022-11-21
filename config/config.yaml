@@ -5,10 +5,14 @@ front-server:
 server:
   app-name: xxx
   access-token: xxx
-  cron: ""
+  cron: "8 * * * * ?"
 db:
   host: 'xxx'
   port: 123
   user: ''
   password: ''
   dbName: ''
+# 高德api
+amap:
+  host: ''
+  key: ''

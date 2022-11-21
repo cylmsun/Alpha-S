@@ -10,7 +10,7 @@ func RequestFilter() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.Request.Header.Get("token")
 		if token == "" {
-			//init.Error(c, http.StatusUnauthorized, "没有授权", "")
+			//initJob.Error(c, http.StatusUnauthorized, "没有授权", "")
 			c.Abort()
 			return
 		}

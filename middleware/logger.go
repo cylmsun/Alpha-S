@@ -11,7 +11,7 @@ func MyLogger(c *gin.Context) {
 		//query := c.Request.URL.RawQuery
 		//
 		//since := time.Since(now)
-		//init.Logger.Info(path,
+		//initJob.Logger.Info(path,
 		//	zap.String("method", c.Request.Method),
 		//	zap.String("path", path),
 		//	zap.String("query", query),

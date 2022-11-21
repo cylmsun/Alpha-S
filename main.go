@@ -2,6 +2,7 @@ package main
 
 import (
 	"Alpha-S/config"
+	"Alpha-S/initJob"
 	"Alpha-S/middleware"
 	"Alpha-S/router"
 	"fmt"
@@ -10,6 +11,9 @@ import (
 
 func main() {
 	envConfig := config.GetConfig()
+
+	//s.GetWeather(envConfig)
+	initJob.Cron(&envConfig)
 
 	r := gin.New()
 	r.Use(middleware.MyLogger, middleware.MyRecovery)
