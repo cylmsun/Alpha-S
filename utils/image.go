@@ -27,6 +27,6 @@ func Text2Image(s string) {
 	dc.Fill()
 
 	dc.SetRGB255(255, 255, 255)
-	dc.DrawStringWrapped(s, 0, 5, 0, 0, sWidth+10, 1.5, gg.AlignCenter)
+	dc.DrawStringWrapped(s, 0, 6, 0, 0, sWidth+10, 1.5, gg.AlignCenter)
 	dc.SavePNG(path)
 }
