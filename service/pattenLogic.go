@@ -1,9 +1,12 @@
 package service
 
-import "regexp"
+import (
+	"regexp"
+)
 
 func PrivateLogic(msg string) (replyMsg string) {
 	c := make(chan string, 1)
+	defer close(c)
 	go WeatherMatch(msg, c)
 
 	select {
@@ -27,4 +30,21 @@ func WeatherMatch(msg string, c chan<- string) {
 		info := GetWeatherInfo(value)
 		c <- info
 	}
+}
+
+func ExchangeRate(msg string, c chan<- string) {
+	reg := regexp.MustCompile(`^查(.*)汇率$`)
+	submatch := reg.FindStringSubmatch(msg)
+
+	var s string
+	switch len(submatch) {
+	case 1:
+		s = "美元"
+	case 2:
+		s = submatch[1]
+	default:
+		s = "美元"
+	}
+	info := GetExchangeRate(s)
+	c <- info
 }

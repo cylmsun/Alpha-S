@@ -2,7 +2,6 @@ package main
 
 import (
 	"Alpha-S/config"
-	"Alpha-S/initJob"
 	"Alpha-S/middleware"
 	"Alpha-S/router"
 	"Alpha-S/utils"
@@ -14,7 +13,7 @@ func main() {
 	envConfig := config.GetConfig()
 	utils.CONFIG = &envConfig
 
-	initJob.Cron(&envConfig)
+	//initJob.Cron(&envConfig)
 
 	r := gin.New()
 	r.Use(middleware.MyLogger, middleware.MyRecovery)
@@ -26,4 +25,6 @@ func main() {
 		_ = envConfig.DBConfig
 		return
 	}
+
+	// \n 或者 %0a 换行？
 }

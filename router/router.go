@@ -3,6 +3,7 @@ package router
 import (
 	"Alpha-S/middleware"
 	"Alpha-S/service"
+	"Alpha-S/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -26,6 +27,9 @@ func InitRouter(r *gin.Engine) *gin.Engine {
 	testApi := r.Group("/test")
 	testApi.POST("/event", service.GetEvent)
 	testApi.POST("/sendMsg", service.SendTest)
+	testApi.POST("/testimg", func(context *gin.Context) {
+		utils.Text2Image("第一行第一行第一行第一行第一行第一行\n第二行第二行第二行\n第三行第三行第三行第三行第三行第三行")
+	})
 
 	return r
 }
