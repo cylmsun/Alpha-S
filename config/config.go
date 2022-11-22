@@ -28,6 +28,9 @@ type Config struct {
 		Host string `yaml:"host"`
 		Key  string `yaml:"key"`
 	} `yaml:"amap"`
+	OtherApi struct {
+		ExchangeRate string `yaml:"exchangeRate"`
+	}
 }
 
 // GetConfig 读取配置文件,path是项目根目录开始的相对路径

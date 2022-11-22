@@ -1,5 +1,5 @@
 front-server:
-  host: 'localhost:8442'
+  host: 'http://localhost:5700'
   access-token: xxx
 server:
   app-name: xxx
@@ -15,3 +15,5 @@ db:
 amap:
   host: ''
   key: ''
+otherApi:
+  exchangeRate: 'https://www.chinamoney.com.cn/ags/ms/cm-u-bk-ccpr'
