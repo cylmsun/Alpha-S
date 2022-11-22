@@ -12,7 +12,7 @@ func Cron(envConfig *config.Config) {
 
 	_, err := c.AddFunc(envConfig.Server.Cron, func() {
 		jobTest()
-		service.GetWeatherInfo(envConfig)
+		service.GetWeatherInfo("320200")
 	})
 	if err != nil {
 		fmt.Printf("cron set error:%s \n", err.Error())

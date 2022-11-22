@@ -20,7 +20,7 @@ func main() {
 	r.Use(middleware.MyLogger, middleware.MyRecovery)
 	r = router.InitRouter(r)
 
-	err := r.Run(":8443")
+	err := r.Run()
 	if err != nil {
 		fmt.Printf("gin run error:%s \n", err.Error())
 		_ = envConfig.DBConfig
