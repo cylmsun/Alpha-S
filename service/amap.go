@@ -9,7 +9,7 @@ import (
 
 // GetWeatherInfo 实时天气
 // todo 匹配根据城市查询
-func GetWeatherInfo(cityCode string) (s string) {
+func GetWeatherInfo(cityCode string, cityName string) (s string) {
 	// 实时天气
 	url := fmt.Sprintf("%s/v3/weather/weatherInfo?city=%s&key=%s", utils.CONFIG.Amap.Host, cityCode, utils.CONFIG.Amap.Key)
 	bytes, err := utils.SendHttpRequest("GET", url, nil, nil)
@@ -24,7 +24,7 @@ func GetWeatherInfo(cityCode string) (s string) {
 		return
 	}
 
-	s = fmt.Sprintf("今天气温 %s 摄氏度，风向 %s， 风力 %s", weather1.Lives[0].Temperature, weather1.Lives[0].Winddirection, weather1.Lives[0].Windpower)
+	s = fmt.Sprintf("今天气温 %s 摄氏度\n风向 %s\n风力 %s", weather1.Lives[0].Temperature, weather1.Lives[0].Winddirection, weather1.Lives[0].Windpower)
 	fmt.Printf("实时天气结果:%s", s)
 	return
 }

@@ -5,6 +5,7 @@ server:
   app-name: xxx
   access-token: xxx
   cron: "0 0 8 * * ?"
+  tempFilePath: './data/temp/'
 db:
   host: 'xxx'
   port: 123
@@ -13,7 +14,7 @@ db:
   dbName: ''
 # 高德api
 amap:
-  host: ''
+  host: 'https://restapi.amap.com'
   key: ''
 otherApi:
   exchangeRate: 'https://www.chinamoney.com.cn/ags/ms/cm-u-bk-ccpr'

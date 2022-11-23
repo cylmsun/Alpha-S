@@ -8,9 +8,10 @@ import (
 
 type Config struct {
 	Server struct {
-		AppName     string `yaml:"app-name"`
-		AccessToken string `yaml:"access-token"`
-		Cron        string `yaml:"cron"`
+		AppName      string `yaml:"app-name"`
+		AccessToken  string `yaml:"access-token"`
+		Cron         string `yaml:"cron"`
+		TempFilePath string `yaml:"tempFilePath"`
 	} `yaml:"server"`
 	FrontServer struct {
 		Host        string `yaml:"host"`
@@ -30,7 +31,7 @@ type Config struct {
 	} `yaml:"amap"`
 	OtherApi struct {
 		ExchangeRate string `yaml:"exchangeRate"`
-	}
+	} `yaml:"otherApi"`
 }
 
 // GetConfig 读取配置文件,path是项目根目录开始的相对路径

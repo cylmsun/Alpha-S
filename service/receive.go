@@ -3,6 +3,7 @@ package service
 import (
 	"Alpha-S/module"
 	"Alpha-S/module/messageEvent"
+	"Alpha-S/utils"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -41,10 +42,16 @@ func GetEvent(c *gin.Context) {
 }
 
 func SendTest(c *gin.Context) {
-	//SendPrivateMessage(utils.CONFIG)
+	//SendPrivateMessage(0000000, "")
 }
 
 func handlePMessage(pme *messageEvent.PrivateMessageEvent) {
-	info := PrivateLogic(pme.Message)
-	SendPrivateMessage(pme.UserId, info)
+	lr := PrivateLogic(pme.Message)
+	fmt.Printf("结果:%d,%s \n", lr.ResultType, lr.Result)
+	switch lr.ResultType {
+	case 1:
+		SendPrivateMessage(pme.UserId, lr.Result)
+	case 2:
+		SendPrivateMessage(pme.UserId, (utils.GenCQCode(lr.Result, lr.ResultType)))
+	}
 }
