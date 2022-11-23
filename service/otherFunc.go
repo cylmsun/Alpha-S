@@ -21,9 +21,7 @@ func GetExchangeRate(msg string) (info string) {
 		return
 	}
 
-	info = fmt.Sprintf("更新汇率成功!\n今日%s汇率：%s", msg, resp.Records[0])
+	info = fmt.Sprintf("更新汇率成功!\n今日%s汇率：%s", msg, resp.Records[0].Values[0])
 	fmt.Printf("实时汇率:%s", info)
-	return
-
 	return
 }

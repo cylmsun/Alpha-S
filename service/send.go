@@ -13,7 +13,7 @@ func SendPrivateMessage(qq int64, m string) {
 	var msg message.PrivateMessage
 	msg.Message = m
 	msg.UserId = qq
-	msg.AutoEscape = true
+	msg.AutoEscape = false
 	b, err := json.Marshal(msg)
 	if err != nil {
 		fmt.Printf("SendPrivateMessage json.Marshal error:%s", err.Error())
