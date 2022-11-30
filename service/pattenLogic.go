@@ -3,22 +3,27 @@ package service
 import (
 	"Alpha-S/module"
 	"Alpha-S/utils"
+	"fmt"
 	"regexp"
+	"time"
 )
 
 func PrivateLogic(msg string) (replyMsg module.LogicResult) {
 	c := make(chan module.LogicResult)
 	defer close(c)
-	go WeatherMatch(msg, c)
-	go ExchangeRate(msg, c)
+	go weatherMatch(msg, c)
+	go exchangeRate(msg, c)
 
 	select {
 	case replyMsg = <-c:
 		return
+	case <-time.After(time.Second * 5):
+		fmt.Println("没有匹配到")
+		return
 	}
 }
 
-func WeatherMatch(msg string, c chan<- module.LogicResult) {
+func weatherMatch(msg string, c chan<- module.LogicResult) {
 	weatherRegexp := regexp.MustCompile(`^查(.*)天气$`)
 	subMatch := weatherRegexp.FindStringSubmatch(msg)
 	if len(subMatch) != 2 {
@@ -40,7 +45,7 @@ func WeatherMatch(msg string, c chan<- module.LogicResult) {
 	}
 }
 
-func ExchangeRate(msg string, c chan<- module.LogicResult) {
+func exchangeRate(msg string, c chan<- module.LogicResult) {
 	reg := regexp.MustCompile(`^查(.*)汇率$`)
 	subMatch := reg.FindStringSubmatch(msg)
 
