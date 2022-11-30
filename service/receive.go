@@ -47,11 +47,14 @@ func SendTest(c *gin.Context) {
 
 func handlePMessage(pme *messageEvent.PrivateMessageEvent) {
 	lr := PrivateLogic(pme.Message)
+	if lr.Result == "" {
+		lr = module.LogicResult{Result: "我不知道你在说什么", ResultType: 1}
+	}
 	fmt.Printf("结果:%d,%s \n", lr.ResultType, lr.Result)
 	switch lr.ResultType {
 	case 1:
 		SendPrivateMessage(pme.UserId, lr.Result)
 	case 2:
-		SendPrivateMessage(pme.UserId, (utils.GenCQCode(lr.Result, lr.ResultType)))
+		SendPrivateMessage(pme.UserId, utils.GenCQCode(lr.Result, lr.ResultType))
 	}
 }

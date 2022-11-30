@@ -25,10 +25,6 @@ func InitRouter(r *gin.Engine) *gin.Engine {
 
 	testApi := r.Group("/test")
 	testApi.POST("/event", service.GetEvent)
-	testApi.POST("/test", service.SendTest)
-	testApi.POST("/testimg", func(context *gin.Context) {
-		//utils.Text2Image("第一行第一行第一行第一行第一行第一行\n第二行第二行第二行\n第三行第三行第三行第三行第三行第三行")
-	})
 
 	return r
 }
